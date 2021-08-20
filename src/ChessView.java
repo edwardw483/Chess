@@ -35,6 +35,7 @@ public class ChessView implements MouseListener, MouseMotionListener{
         BoardPanel.setLayout(null);
         BoardPanel.setSize(new Dimension(600, 800));
         
+        //JFrame
         ChessFrame.setContentPane(BoardPanel);
         ChessFrame.pack();
         ChessFrame.setResizable(false);
