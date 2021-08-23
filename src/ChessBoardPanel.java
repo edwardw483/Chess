@@ -9,9 +9,9 @@ public class ChessBoardPanel extends JLayeredPane{
     JPanel chessBoard = new JPanel();
     
     //Methods
-    public void drawPiece(String assetPath, int component){
+    public void drawPiece(String assetPath, int componentNum){
         JLabel piece = new JLabel(new ImageIcon(ChessBoardPanel.class.getResource(assetPath)));
-        JPanel panel = (JPanel)chessBoard.getComponent(component);
+        JPanel panel = (JPanel)chessBoard.getComponent(componentNum);
         panel.add(piece);
     }
     //Constructor
