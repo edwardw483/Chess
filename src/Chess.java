@@ -3,12 +3,17 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
 
-public class ChessView implements MouseListener, MouseMotionListener{
+public class Chess implements MouseListener, MouseMotionListener{
     //Properties
     JFrame ChessFrame = new JFrame("Chess");
     ChessBoardPanel BoardPanel = new ChessBoardPanel();
     JLabel ChessPiece;
     int diffX, diffY;
+    Point currentPos = new Point();
+    Point desiredPos = new Point();
+    ChessModel model = new ChessModel();
+
+    //Methods
     public void mousePressed(MouseEvent e){
         //Find component at mouse press
         ChessPiece = null;
@@ -26,6 +31,10 @@ public class ChessView implements MouseListener, MouseMotionListener{
         ChessPiece.setLocation(pieceCoords.x, pieceCoords.y);
         ChessPiece.setSize(ChessPiece.getWidth(), ChessPiece.getHeight());
         BoardPanel.add(ChessPiece, JLayeredPane.DRAG_LAYER);
+        //Get Current Point
+        currentPos.x = e.getX();
+        currentPos.y = e.getY();
+
     }
     public void mouseEntered(MouseEvent e){
 
@@ -35,21 +44,39 @@ public class ChessView implements MouseListener, MouseMotionListener{
         if(ChessPiece == null){
             return;
         }
-        //Remove old chess piece and place it at the new component
+
+        //Get Desired Point
+        desiredPos.x = e.getX();
+        desiredPos.y = e.getY();
         ChessPiece.setVisible(false);
-        Component comp =  BoardPanel.findComponentAt(e.getX(), e.getY());
-        //If currently occupied by a piece
-        if(comp instanceof JLabel){
-            Container parent = comp.getParent();
-            parent.remove(0);
-            parent.add(ChessPiece);
-        }
-        //Else empty
-        else{
+
+        //Check if move is invalid
+        if(model.checkMove(currentPos, desiredPos) == false){
+            System.out.println("Invalid Move");
+            //Return piece back to original location
+            Component comp = BoardPanel.findComponentAt(currentPos.x, currentPos.y);
             Container parent = (Container)comp;
             parent.add(ChessPiece);
+            ChessPiece.setVisible(true);
+            BoardPanel.repaint();
         }
-        ChessPiece.setVisible(true);
+        //Valid move
+        else{
+            //Remove old chess piece and place it at the new component
+            Component comp = BoardPanel.findComponentAt(e.getX(), e.getY());
+            //If currently occupied by a piece
+            if(comp instanceof JLabel){
+                Container parent = comp.getParent();
+                parent.remove(0);
+                parent.add(ChessPiece);
+            }
+            //Else empty
+            else{
+                Container parent = (Container)comp;
+                parent.add(ChessPiece);
+            }
+            ChessPiece.setVisible(true);
+        }
     }
     public void mouseDragged(MouseEvent me){
         //End method if no piece is selected
@@ -66,10 +93,10 @@ public class ChessView implements MouseListener, MouseMotionListener{
 
     }
     public void mouseExited(MouseEvent e){
-
+        
     }
     //Constructor
-    public ChessView(){
+    public Chess(){
         ChessFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         //ChessBoardPanel
@@ -84,5 +111,9 @@ public class ChessView implements MouseListener, MouseMotionListener{
         ChessFrame.setResizable(false);
         ChessFrame.setVisible(true);
 
+    }
+    public static void main(String[] args) throws Exception {
+        System.out.println("Hello, World!");
+        Chess Chess = new Chess();
     }
 }
