@@ -134,7 +134,7 @@ public class ChessModel{
                 System.out.println("dark");
                 //Pawn
                 if(board[currentRow][currentColumn].name.substring(1,2).equals("p")){
-                    //Moving pawn from inital position
+                    //Moving pawn 2 squares from inital position
                     if(board[currentRow][currentColumn].movedFromInitial == false){
                         //If desired location is in correct rows and the path is clear
                         if(desiredRow == 3 && board[2][currentColumn].name.equals("NA")){
@@ -143,11 +143,26 @@ public class ChessModel{
                                 validMove = true;
                                 whiteMove = true;
                                 board[currentRow][currentColumn].movedFromInitial = true;
-                                board[desiredRow][currentColumn].name = board[currentRow][currentColumn].name;
+                                board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
                                 board = resetCellProperties(board, currentColumn, currentRow);
                             }
                         }
                     }
+                    //Pawn taking a piece
+                    else if(desiredRow == currentRow + 1 && desiredColumn == currentColumn + 1 && board[desiredRow][desiredColumn].name.substring(0,1).equals("l")){
+                        validMove = true;
+                        whiteMove = true;
+                        board[currentRow][currentColumn].movedFromInitial = true;
+                        board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
+                        board = resetCellProperties(board, currentColumn, currentRow);
+                    }else if(desiredRow == currentRow + 1 && desiredColumn == currentColumn - 1 && board[desiredRow][desiredColumn].name.substring(0,1).equals("l")){
+                        validMove = true;
+                        whiteMove = true;
+                        board[currentRow][currentColumn].movedFromInitial = true;
+                        board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
+                        board = resetCellProperties(board, currentColumn, currentRow);
+                    }
+
                 }
             }
             //Light Turn
@@ -155,7 +170,7 @@ public class ChessModel{
                 System.out.println("light");
                 //Pawn
                 if(board[currentRow][currentColumn].name.substring(1,2).equals("p")){
-                    //Moving pawn from inital position
+                    //Moving pawn 2 squares from inital position
                     if(board[currentRow][currentColumn].movedFromInitial == false){
                         //If desired location is in correct rows and the path is clear
                         if(desiredRow == 4 && board[5][currentColumn].name.equals("NA")){
@@ -164,10 +179,24 @@ public class ChessModel{
                                 validMove = true;
                                 whiteMove = false;
                                 board[currentRow][currentColumn].movedFromInitial = true;
-                                board[desiredRow][currentColumn].name = board[currentRow][currentColumn].name;
+                                board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
                                 board = resetCellProperties(board, currentColumn, currentRow);
                             }
                         }
+                    }
+                    //Pawn taking a piece
+                    else if(desiredRow == currentRow - 1 && desiredColumn == currentColumn + 1 && board[desiredRow][desiredColumn].name.substring(0,1).equals("d")){
+                        validMove = true;
+                        whiteMove = false;
+                        board[currentRow][currentColumn].movedFromInitial = true;
+                        board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
+                        board = resetCellProperties(board, currentColumn, currentRow);
+                    }else if(desiredRow == currentRow - 1 && desiredColumn == currentColumn - 1 && board[desiredRow][desiredColumn].name.substring(0,1).equals("d")){
+                        validMove = true;
+                        whiteMove = false;
+                        board[currentRow][currentColumn].movedFromInitial = true;
+                        board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
+                        board = resetCellProperties(board, currentColumn, currentRow);
                     }
                 }
             }
@@ -180,8 +209,15 @@ public class ChessModel{
         board[row][col].colour = "NA";
         board[row][col].movedFromInitial = false;
         board[row][col].position = row * 8 + col;
-
         return board;
+    }
+    public void printBoard(){
+        for(int row = 0; row < 8; row++){
+            for(int col = 0; col < 8; col++){
+                System.out.print(board[row][col].name);
+            }
+            System.out.println("");
+        }
     }
     public ChessModel(){
         this.createBoard();

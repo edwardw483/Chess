@@ -77,6 +77,7 @@ public class Chess implements MouseListener, MouseMotionListener{
             }
             ChessPiece.setVisible(true);
         }
+        model.printBoard();
     }
     public void mouseDragged(MouseEvent me){
         //End method if no piece is selected
