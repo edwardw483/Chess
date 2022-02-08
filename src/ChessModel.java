@@ -162,6 +162,14 @@ public class ChessModel{
                         board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
                         board = resetCellProperties(board, currentColumn, currentRow);
                     }
+                    //Pawn moving one square up
+                    else if(desiredRow == currentRow + 1 && desiredColumn == currentColumn && board[desiredRow][desiredColumn].name.equals("NA")){
+                        validMove = true;
+                        whiteMove = true;
+                        board[currentRow][currentColumn].movedFromInitial = true;
+                        board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
+                        board = resetCellProperties(board, currentColumn, currentRow);
+                    }
 
                 }
             }
@@ -177,26 +185,22 @@ public class ChessModel{
                             //If empty location and same column 
                             if(board[desiredRow][currentColumn].name.equalsIgnoreCase("NA") && currentColumn == desiredColumn){
                                 validMove = true;
-                                whiteMove = false;
-                                board[currentRow][currentColumn].movedFromInitial = true;
-                                board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
-                                board = resetCellProperties(board, currentColumn, currentRow);
+                                lightMove(currentRow, currentColumn, desiredRow, desiredColumn);
                             }
                         }
                     }
                     //Pawn taking a piece
                     else if(desiredRow == currentRow - 1 && desiredColumn == currentColumn + 1 && board[desiredRow][desiredColumn].name.substring(0,1).equals("d")){
                         validMove = true;
-                        whiteMove = false;
-                        board[currentRow][currentColumn].movedFromInitial = true;
-                        board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
-                        board = resetCellProperties(board, currentColumn, currentRow);
+                        lightMove(currentRow, currentColumn, desiredRow, desiredColumn);
                     }else if(desiredRow == currentRow - 1 && desiredColumn == currentColumn - 1 && board[desiredRow][desiredColumn].name.substring(0,1).equals("d")){
                         validMove = true;
-                        whiteMove = false;
-                        board[currentRow][currentColumn].movedFromInitial = true;
-                        board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
-                        board = resetCellProperties(board, currentColumn, currentRow);
+                        lightMove(currentRow, currentColumn, desiredRow, desiredColumn);
+                    }
+                    //Pawn moving one square up
+                    else if(desiredRow == currentRow - 1 && desiredColumn == currentColumn && board[desiredRow][desiredColumn].name.equals("NA")){
+                        validMove = true;
+                        lightMove(currentRow, currentColumn, desiredRow, desiredColumn);
                     }
                 }
             }
@@ -219,8 +223,14 @@ public class ChessModel{
             System.out.println("");
         }
     }
+    public void lightMove(int currentRow, int currentColumn, int desiredRow, int desiredColumn){
+        this.whiteMove = false;
+        this.board[currentRow][currentColumn].movedFromInitial = true;
+        this.board[desiredRow][desiredColumn].copy(board[currentRow][currentColumn]);
+        this.board = resetCellProperties(board, currentColumn, currentRow);
+    }
     public ChessModel(){
         this.createBoard();
-        whiteMove = true;
+        this.whiteMove = true;
     }
 }
