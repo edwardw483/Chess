@@ -13,7 +13,7 @@ Ensure you have the lastest version of the Java and the Java Development Kit (JD
 ## Credits
 Assets are from: https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces <br />
 
-#### Dark Pieces
+### Dark Pieces
 Dark King: By en:User:Cburnett - Own work  This W3C-unspecified vector image was created with Inkscape ., CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499803 <br />
 Dark Queen: By en:User:Cburnett - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499811 <br />
 Dark Rook: By en:User:Cburnett - Own work  This W3C-unspecified vector image was created with Inkscape ., CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499813 <br />
@@ -21,7 +21,7 @@ Dark Bishop: By en:User:Cburnett - Own work  This W3C-unspecified vector image 
 Dark Knight: By en:User:Cburnett - Own work  This W3C-unspecified vector image was created with Inkscape ., CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499807 <br />
 Dark Pawn: By en:User:Cburnett - Own work  This W3C-unspecified vector image was created with Inkscape ., CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499809 <br />
 
-#### Light Pieces
+### Light Pieces
 Light King: By User:Cburnett - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499806 <br />
 Light Queen: By en:User:Cburnett - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499812 <br />
 Light Rook: By en:User:Cburnett - Own work  This W3C-unspecified vector image was created with Inkscape ., CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1499814 <br />
