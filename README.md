@@ -4,7 +4,7 @@ A program designed to implement the two player game Chess. Written in Java using
 ## Getting Started
 Ensure you have the lastest version of the Java and the Java Development Kit (JDK) installed. Clone the repository and run the file `./src/Chess.java`.
 
-## Visuals
+## Screenshots
 ![image](https://user-images.githubusercontent.com/87340790/153069512-5a5a2e81-d907-4ce7-97e5-9edf398e8293.png)
 ![image](https://user-images.githubusercontent.com/87340790/153069833-5d34efdc-540a-42e6-9cb0-5d38e431b71b.png)
 
