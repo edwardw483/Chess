@@ -2,7 +2,13 @@
 A program designed to implement the two player game Chess. Written in Java using OOP principles, Java AWT, and Java Swing. Features include moving pawns and the ability for pawns to capture pieces. The project is a work in progress. 
 
 ## Getting Started
-Ensure you have the lastest version of the Java and the Java Development Kit (JDK) installed. Clone the repository and run `./src/Chess.java`.
+Ensure you have the lastest version of the Java and the Java Development Kit (JDK) installed. Clone the repository and run the file `./src/Chess.java`.
+
+## Visuals
+![image](https://user-images.githubusercontent.com/87340790/153069512-5a5a2e81-d907-4ce7-97e5-9edf398e8293.png)
+![image](https://user-images.githubusercontent.com/87340790/153069833-5d34efdc-540a-42e6-9cb0-5d38e431b71b.png)
+
+
 
 ## Credits
 Assets are from: https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces <br />
